@@ -2,7 +2,7 @@ import { CartItem } from '../../components';
 import * as S from './cart.styled';
 import { useGetMyCart } from '../../api/hooks/carts';
 
-export const CartPage = () => {
+const CartPage = () => {
   const { data, isLoading, isError } = useGetMyCart();
 
   if (isLoading) {
@@ -36,3 +36,5 @@ export const CartPage = () => {
     </>
   );
 };
+
+export default CartPage;

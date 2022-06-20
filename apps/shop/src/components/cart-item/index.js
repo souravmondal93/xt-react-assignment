@@ -1,9 +1,8 @@
 import * as S from './cart-item.styled';
-import { Button } from '../button';
 import { UpdateItems } from '../update-items';
 
 export const CartItem = ({ productDetails, cartDetails }) => {
-  const { _id, imageUrl, name, price, quantity } = productDetails;
+  const { imageUrl, name, price, quantity } = productDetails;
 
   return (
     <S.CartItemWrapper>

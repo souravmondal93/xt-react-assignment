@@ -1,7 +1,7 @@
 import { Link } from '../../components';
 import * as S from './home.styled';
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <S.HomePageWrapper>
       <S.LinkWrapper>
@@ -12,3 +12,5 @@ export const HomePage = () => {
     </S.HomePageWrapper>
   );
 };
+
+export default HomePage;

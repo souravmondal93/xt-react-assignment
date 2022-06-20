@@ -1,5 +1,3 @@
-import produce from 'immer';
-
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 

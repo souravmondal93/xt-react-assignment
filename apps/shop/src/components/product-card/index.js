@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import produce from 'immer';
 
 import { Button, UpdateItems } from '../';
@@ -13,17 +13,24 @@ export const ProductCard = ({ productDetails, cartDetails }) => {
   const [itemIncart, setItemIncart] = useState(false);
   const [productWithQuanity, setProductWithQuanity] = useState(productDetails);
 
+  const currentItemInCart = useCallback(
+    (id) => {
+      return products.find((product) => product._id === id);
+    },
+    [products]
+  );
+
   useEffect(() => {
     const cartItem = currentItemInCart(_id);
     setItemIncart(Boolean(cartItem));
-  }, [cartDetails]);
+  }, [cartDetails, currentItemInCart, _id]);
 
   useEffect(() => {
     if (itemIncart) {
       const itemInCart = currentItemInCart(_id);
       setProductWithQuanity(itemInCart);
     }
-  }, [itemIncart, cartDetails]);
+  }, [itemIncart, cartDetails, currentItemInCart, _id]);
 
   const handleAddToCart = (id) => {
     const itemInCart = currentItemInCart(id);
@@ -41,10 +48,6 @@ export const ProductCard = ({ productDetails, cartDetails }) => {
     }
 
     updateCart.mutate({ ...cartDetails, products: updatedProducts });
-  };
-
-  const currentItemInCart = (id) => {
-    return products.find((product) => product._id === id);
   };
 
   return (

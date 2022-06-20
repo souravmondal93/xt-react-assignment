@@ -5,7 +5,7 @@ import { ProductCard, Pagination } from '../../components';
 import { useProductsList } from '../../api/hooks/products';
 import { useGetMyCart } from '../../api/hooks/carts';
 
-export const ProductListPage = () => {
+const ProductListPage = () => {
   let { pageNumber = 1 } = useParams();
   const { data, isLoading, isError } = useProductsList({
     skip: pageNumber - 1,
@@ -42,3 +42,5 @@ export const ProductListPage = () => {
     </S.PageWrapper>
   );
 };
+
+export default ProductListPage;
